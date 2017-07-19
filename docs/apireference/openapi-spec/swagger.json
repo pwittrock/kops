@@ -1,0 +1,3508 @@
+{
+  "swagger": "2.0",
+  "info": {
+   "title": "Kops API",
+   "version": "0.1"
+  },
+  "paths": {
+   "/apis/": {
+    "get": {
+     "description": "get available API versions",
+     "consumes": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "apis"
+     ],
+     "operationId": "getAPIVersions",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroupList"
+       }
+      }
+     }
+    }
+   },
+   "/apis/kops/": {
+    "get": {
+     "description": "get information of a group",
+     "consumes": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops"
+     ],
+     "operationId": "getKopsAPIGroup",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup"
+       }
+      }
+     }
+    }
+   },
+   "/apis/kops/v1alpha2/": {
+    "get": {
+     "description": "get available resources",
+     "consumes": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "getKopsV1alpha2APIResources",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList"
+       }
+      }
+     }
+    }
+   },
+   "/apis/kops/v1alpha2/clusters": {
+    "get": {
+     "description": "list or watch objects of kind Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "listKopsV1alpha2ClusterForAllNamespaces",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.ClusterList"
+       }
+      }
+     },
+     "x-kubernetes-action": "list",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+      "name": "fieldSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "If true, partially initialized resources are included in the response.",
+      "name": "includeUninitialized",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+      "name": "labelSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+      "name": "resourceVersion",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "integer",
+      "description": "Timeout for the list/watch call.",
+      "name": "timeoutSeconds",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+      "name": "watch",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/instancegroups": {
+    "get": {
+     "description": "list or watch objects of kind InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "listKopsV1alpha2InstanceGroupForAllNamespaces",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroupList"
+       }
+      }
+     },
+     "x-kubernetes-action": "list",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+      "name": "fieldSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "If true, partially initialized resources are included in the response.",
+      "name": "includeUninitialized",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+      "name": "labelSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+      "name": "resourceVersion",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "integer",
+      "description": "Timeout for the list/watch call.",
+      "name": "timeoutSeconds",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+      "name": "watch",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/namespaces/{namespace}/clusters": {
+    "get": {
+     "description": "list or watch objects of kind Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "listKopsV1alpha2NamespacedCluster",
+     "parameters": [
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+       "name": "fieldSelector",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "If true, partially initialized resources are included in the response.",
+       "name": "includeUninitialized",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+       "name": "labelSelector",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+       "name": "resourceVersion",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "integer",
+       "description": "Timeout for the list/watch call.",
+       "name": "timeoutSeconds",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+       "name": "watch",
+       "in": "query"
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.ClusterList"
+       }
+      }
+     },
+     "x-kubernetes-action": "list",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "post": {
+     "description": "create a Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "createKopsV1alpha2NamespacedCluster",
+     "parameters": [
+      {
+       "name": "body",
+       "in": "body",
+       "required": true,
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.Cluster"
+       }
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.Cluster"
+       }
+      }
+     },
+     "x-kubernetes-action": "post",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "delete": {
+     "description": "delete collection of Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "deleteKopsV1alpha2CollectionNamespacedCluster",
+     "parameters": [
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+       "name": "fieldSelector",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "If true, partially initialized resources are included in the response.",
+       "name": "includeUninitialized",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+       "name": "labelSelector",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+       "name": "resourceVersion",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "integer",
+       "description": "Timeout for the list/watch call.",
+       "name": "timeoutSeconds",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+       "name": "watch",
+       "in": "query"
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
+       }
+      }
+     },
+     "x-kubernetes-action": "deletecollection",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "object name and auth scope, such as for teams and projects",
+      "name": "namespace",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/namespaces/{namespace}/clusters/{name}": {
+    "get": {
+     "description": "read the specified Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "readKopsV1alpha2NamespacedCluster",
+     "parameters": [
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'.",
+       "name": "exact",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Should this value be exported.  Export strips fields that a user can not specify.",
+       "name": "export",
+       "in": "query"
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.Cluster"
+       }
+      }
+     },
+     "x-kubernetes-action": "get",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "put": {
+     "description": "replace the specified Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "replaceKopsV1alpha2NamespacedCluster",
+     "parameters": [
+      {
+       "name": "body",
+       "in": "body",
+       "required": true,
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.Cluster"
+       }
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.Cluster"
+       }
+      }
+     },
+     "x-kubernetes-action": "put",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "delete": {
+     "description": "delete a Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "deleteKopsV1alpha2NamespacedCluster",
+     "parameters": [
+      {
+       "name": "body",
+       "in": "body",
+       "required": true,
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions"
+       }
+      },
+      {
+       "uniqueItems": true,
+       "type": "integer",
+       "description": "The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.",
+       "name": "gracePeriodSeconds",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the \"orphan\" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.",
+       "name": "orphanDependents",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.",
+       "name": "propagationPolicy",
+       "in": "query"
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
+       }
+      }
+     },
+     "x-kubernetes-action": "delete",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "patch": {
+     "description": "partially update the specified Cluster",
+     "consumes": [
+      "application/json-patch+json",
+      "application/merge-patch+json",
+      "application/strategic-merge-patch+json"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "patchKopsV1alpha2NamespacedCluster",
+     "parameters": [
+      {
+       "name": "body",
+       "in": "body",
+       "required": true,
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
+       }
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.Cluster"
+       }
+      }
+     },
+     "x-kubernetes-action": "patch",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "name of the Cluster",
+      "name": "name",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "object name and auth scope, such as for teams and projects",
+      "name": "namespace",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/namespaces/{namespace}/instancegroups": {
+    "get": {
+     "description": "list or watch objects of kind InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "listKopsV1alpha2NamespacedInstanceGroup",
+     "parameters": [
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+       "name": "fieldSelector",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "If true, partially initialized resources are included in the response.",
+       "name": "includeUninitialized",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+       "name": "labelSelector",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+       "name": "resourceVersion",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "integer",
+       "description": "Timeout for the list/watch call.",
+       "name": "timeoutSeconds",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+       "name": "watch",
+       "in": "query"
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroupList"
+       }
+      }
+     },
+     "x-kubernetes-action": "list",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "post": {
+     "description": "create an InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "createKopsV1alpha2NamespacedInstanceGroup",
+     "parameters": [
+      {
+       "name": "body",
+       "in": "body",
+       "required": true,
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroup"
+       }
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroup"
+       }
+      }
+     },
+     "x-kubernetes-action": "post",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "delete": {
+     "description": "delete collection of InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "deleteKopsV1alpha2CollectionNamespacedInstanceGroup",
+     "parameters": [
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+       "name": "fieldSelector",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "If true, partially initialized resources are included in the response.",
+       "name": "includeUninitialized",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+       "name": "labelSelector",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+       "name": "resourceVersion",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "integer",
+       "description": "Timeout for the list/watch call.",
+       "name": "timeoutSeconds",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+       "name": "watch",
+       "in": "query"
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
+       }
+      }
+     },
+     "x-kubernetes-action": "deletecollection",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "object name and auth scope, such as for teams and projects",
+      "name": "namespace",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/namespaces/{namespace}/instancegroups/{name}": {
+    "get": {
+     "description": "read the specified InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "readKopsV1alpha2NamespacedInstanceGroup",
+     "parameters": [
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'.",
+       "name": "exact",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Should this value be exported.  Export strips fields that a user can not specify.",
+       "name": "export",
+       "in": "query"
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroup"
+       }
+      }
+     },
+     "x-kubernetes-action": "get",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "put": {
+     "description": "replace the specified InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "replaceKopsV1alpha2NamespacedInstanceGroup",
+     "parameters": [
+      {
+       "name": "body",
+       "in": "body",
+       "required": true,
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroup"
+       }
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroup"
+       }
+      }
+     },
+     "x-kubernetes-action": "put",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "delete": {
+     "description": "delete an InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "deleteKopsV1alpha2NamespacedInstanceGroup",
+     "parameters": [
+      {
+       "name": "body",
+       "in": "body",
+       "required": true,
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions"
+       }
+      },
+      {
+       "uniqueItems": true,
+       "type": "integer",
+       "description": "The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.",
+       "name": "gracePeriodSeconds",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "boolean",
+       "description": "Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the \"orphan\" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.",
+       "name": "orphanDependents",
+       "in": "query"
+      },
+      {
+       "uniqueItems": true,
+       "type": "string",
+       "description": "Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.",
+       "name": "propagationPolicy",
+       "in": "query"
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
+       }
+      }
+     },
+     "x-kubernetes-action": "delete",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "patch": {
+     "description": "partially update the specified InstanceGroup",
+     "consumes": [
+      "application/json-patch+json",
+      "application/merge-patch+json",
+      "application/strategic-merge-patch+json"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "patchKopsV1alpha2NamespacedInstanceGroup",
+     "parameters": [
+      {
+       "name": "body",
+       "in": "body",
+       "required": true,
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
+       }
+      }
+     ],
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroup"
+       }
+      }
+     },
+     "x-kubernetes-action": "patch",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "name of the InstanceGroup",
+      "name": "name",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "object name and auth scope, such as for teams and projects",
+      "name": "namespace",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/watch/clusters": {
+    "get": {
+     "description": "watch individual changes to a list of Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "watchKopsV1alpha2ClusterListForAllNamespaces",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+       }
+      }
+     },
+     "x-kubernetes-action": "watchlist",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+      "name": "fieldSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "If true, partially initialized resources are included in the response.",
+      "name": "includeUninitialized",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+      "name": "labelSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+      "name": "resourceVersion",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "integer",
+      "description": "Timeout for the list/watch call.",
+      "name": "timeoutSeconds",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+      "name": "watch",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/watch/instancegroups": {
+    "get": {
+     "description": "watch individual changes to a list of InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "watchKopsV1alpha2InstanceGroupListForAllNamespaces",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+       }
+      }
+     },
+     "x-kubernetes-action": "watchlist",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+      "name": "fieldSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "If true, partially initialized resources are included in the response.",
+      "name": "includeUninitialized",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+      "name": "labelSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+      "name": "resourceVersion",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "integer",
+      "description": "Timeout for the list/watch call.",
+      "name": "timeoutSeconds",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+      "name": "watch",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/watch/namespaces/{namespace}/clusters": {
+    "get": {
+     "description": "watch individual changes to a list of Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "watchKopsV1alpha2NamespacedClusterList",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+       }
+      }
+     },
+     "x-kubernetes-action": "watchlist",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+      "name": "fieldSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "If true, partially initialized resources are included in the response.",
+      "name": "includeUninitialized",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+      "name": "labelSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "object name and auth scope, such as for teams and projects",
+      "name": "namespace",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+      "name": "resourceVersion",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "integer",
+      "description": "Timeout for the list/watch call.",
+      "name": "timeoutSeconds",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+      "name": "watch",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/watch/namespaces/{namespace}/clusters/{name}": {
+    "get": {
+     "description": "watch changes to an object of kind Cluster",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "watchKopsV1alpha2NamespacedCluster",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+       }
+      }
+     },
+     "x-kubernetes-action": "watch",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+      "name": "fieldSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "If true, partially initialized resources are included in the response.",
+      "name": "includeUninitialized",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+      "name": "labelSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "name of the Cluster",
+      "name": "name",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "object name and auth scope, such as for teams and projects",
+      "name": "namespace",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+      "name": "resourceVersion",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "integer",
+      "description": "Timeout for the list/watch call.",
+      "name": "timeoutSeconds",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+      "name": "watch",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/watch/namespaces/{namespace}/instancegroups": {
+    "get": {
+     "description": "watch individual changes to a list of InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "watchKopsV1alpha2NamespacedInstanceGroupList",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+       }
+      }
+     },
+     "x-kubernetes-action": "watchlist",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+      "name": "fieldSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "If true, partially initialized resources are included in the response.",
+      "name": "includeUninitialized",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+      "name": "labelSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "object name and auth scope, such as for teams and projects",
+      "name": "namespace",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+      "name": "resourceVersion",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "integer",
+      "description": "Timeout for the list/watch call.",
+      "name": "timeoutSeconds",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+      "name": "watch",
+      "in": "query"
+     }
+    ]
+   },
+   "/apis/kops/v1alpha2/watch/namespaces/{namespace}/instancegroups/{name}": {
+    "get": {
+     "description": "watch changes to an object of kind InstanceGroup",
+     "consumes": [
+      "*/*"
+     ],
+     "produces": [
+      "application/json",
+      "application/yaml",
+      "application/vnd.kubernetes.protobuf",
+      "application/json;stream=watch",
+      "application/vnd.kubernetes.protobuf;stream=watch"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "kops_v1alpha2"
+     ],
+     "operationId": "watchKopsV1alpha2NamespacedInstanceGroup",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+       }
+      }
+     },
+     "x-kubernetes-action": "watch",
+     "x-kubernetes-group-version-kind": {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    },
+    "parameters": [
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their fields. Defaults to everything.",
+      "name": "fieldSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "If true, partially initialized resources are included in the response.",
+      "name": "includeUninitialized",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "A selector to restrict the list of returned objects by their labels. Defaults to everything.",
+      "name": "labelSelector",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "name of the InstanceGroup",
+      "name": "name",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "object name and auth scope, such as for teams and projects",
+      "name": "namespace",
+      "in": "path",
+      "required": true
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "If 'true', then the output is pretty printed.",
+      "name": "pretty",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "string",
+      "description": "When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.",
+      "name": "resourceVersion",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "integer",
+      "description": "Timeout for the list/watch call.",
+      "name": "timeoutSeconds",
+      "in": "query"
+     },
+     {
+      "uniqueItems": true,
+      "type": "boolean",
+      "description": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.",
+      "name": "watch",
+      "in": "query"
+     }
+    ]
+   },
+   "/version/": {
+    "get": {
+     "description": "get the code version",
+     "consumes": [
+      "application/json"
+     ],
+     "produces": [
+      "application/json"
+     ],
+     "schemes": [
+      "https"
+     ],
+     "tags": [
+      "version"
+     ],
+     "operationId": "getCodeVersion",
+     "responses": {
+      "200": {
+       "description": "OK",
+       "schema": {
+        "$ref": "#/definitions/io.k8s.apimachinery.pkg.version.Info"
+       }
+      }
+     }
+    }
+   }
+  },
+  "definitions": {
+   "io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup": {
+    "description": "APIGroup contains the name, the supported versions, and the preferred version of a group.",
+    "required": [
+     "name",
+     "versions",
+     "serverAddressByClientCIDRs"
+    ],
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "name": {
+      "description": "name is the name of the group.",
+      "type": "string"
+     },
+     "preferredVersion": {
+      "description": "preferredVersion is the version preferred by the API server, which probably is the storage version.",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery"
+     },
+     "serverAddressByClientCIDRs": {
+      "description": "a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR"
+      }
+     },
+     "versions": {
+      "description": "versions are the versions supported in this group.",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery"
+      }
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.APIGroupList": {
+    "description": "APIGroupList is a list of APIGroup, to allow clients to discover the API at /apis.",
+    "required": [
+     "groups"
+    ],
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "groups": {
+      "description": "groups is a list of APIGroup.",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup"
+      }
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.APIResource": {
+    "description": "APIResource specifies the name of a resource and whether it is namespaced.",
+    "required": [
+     "name",
+     "singularName",
+     "namespaced",
+     "kind",
+     "verbs"
+    ],
+    "properties": {
+     "categories": {
+      "description": "categories is a list of the grouped resources this resource belongs to (e.g. 'all')",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "kind": {
+      "description": "kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo')",
+      "type": "string"
+     },
+     "name": {
+      "description": "name is the plural name of the resource.",
+      "type": "string"
+     },
+     "namespaced": {
+      "description": "namespaced indicates if a resource is namespaced or not.",
+      "type": "boolean"
+     },
+     "shortNames": {
+      "description": "shortNames is a list of suggested short names of the resource.",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "singularName": {
+      "description": "singularName is the singular name of the resource.  This allows clients to handle plural and singular opaquely. The singularName is more correct for reporting status on a single item and both singular and plural are allowed from the kubectl CLI interface.",
+      "type": "string"
+     },
+     "verbs": {
+      "description": "verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList": {
+    "description": "APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced.",
+    "required": [
+     "groupVersion",
+     "resources"
+    ],
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "groupVersion": {
+      "description": "groupVersion is the group and version this APIResourceList is for.",
+      "type": "string"
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "resources": {
+      "description": "resources contains the name of the resources and if they are namespaced.",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource"
+      }
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions": {
+    "description": "DeleteOptions may be provided when deleting an API object.",
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "gracePeriodSeconds": {
+      "description": "The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.",
+      "type": "integer",
+      "format": "int64"
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "orphanDependents": {
+      "description": "Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the \"orphan\" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.",
+      "type": "boolean"
+     },
+     "preconditions": {
+      "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
+     },
+     "propagationPolicy": {
+      "description": "Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.Duration": {
+    "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+    "required": [
+     "Duration"
+    ],
+    "properties": {
+     "Duration": {
+      "type": "integer",
+      "format": "int64"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery": {
+    "description": "GroupVersion contains the \"group/version\" and \"version\" string of a version. It is made a struct to keep extensibility.",
+    "required": [
+     "groupVersion",
+     "version"
+    ],
+    "properties": {
+     "groupVersion": {
+      "description": "groupVersion specifies the API group and version in the form \"group/version\"",
+      "type": "string"
+     },
+     "version": {
+      "description": "version specifies the version in the form of \"version\". This is to save the clients the trouble of splitting the GroupVersion.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.Initializer": {
+    "description": "Initializer is information about an initializer that has not yet completed.",
+    "required": [
+     "name"
+    ],
+    "properties": {
+     "name": {
+      "description": "name of the process that is responsible for initializing this object.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.Initializers": {
+    "description": "Initializers tracks the progress of initialization.",
+    "required": [
+     "pending"
+    ],
+    "properties": {
+     "pending": {
+      "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients.",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Initializer"
+      }
+     },
+     "result": {
+      "description": "If result is set with the Failure field, the object will be persisted to storage and then deleted, ensuring that other clients can observe the deletion.",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta": {
+    "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
+    "properties": {
+     "resourceVersion": {
+      "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
+      "type": "string"
+     },
+     "selfLink": {
+      "description": "SelfLink is a URL representing this object. Populated by the system. Read-only.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta": {
+    "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+    "properties": {
+     "annotations": {
+      "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "clusterName": {
+      "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.",
+      "type": "string"
+     },
+     "creationTimestamp": {
+      "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+     },
+     "deletionGracePeriodSeconds": {
+      "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+      "type": "integer",
+      "format": "int64"
+     },
+     "deletionTimestamp": {
+      "description": "DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field. Once set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+     },
+     "finalizers": {
+      "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed.",
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "x-kubernetes-patch-strategy": "merge"
+     },
+     "generateName": {
+      "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency",
+      "type": "string"
+     },
+     "generation": {
+      "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+      "type": "integer",
+      "format": "int64"
+     },
+     "initializers": {
+      "description": "An initializer is a controller which enforces some system invariant at object creation time. This field is a list of initializers that have not yet acted on this object. If nil or empty, this object has been completely initialized. Otherwise, the object is considered uninitialized and is hidden (in list/watch and get calls) from clients that haven't explicitly asked to observe uninitialized objects.\n\nWhen an object is created, the system will populate this list with the current set of initializers. Only privileged users may set or modify this list. Once it is empty, it may not be modified further by any user.",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers"
+     },
+     "labels": {
+      "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "name": {
+      "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+      "type": "string"
+     },
+     "namespace": {
+      "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces",
+      "type": "string"
+     },
+     "ownerReferences": {
+      "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+      },
+      "x-kubernetes-patch-merge-key": "uid",
+      "x-kubernetes-patch-strategy": "merge"
+     },
+     "resourceVersion": {
+      "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
+      "type": "string"
+     },
+     "selfLink": {
+      "description": "SelfLink is a URL representing this object. Populated by the system. Read-only.",
+      "type": "string"
+     },
+     "uid": {
+      "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference": {
+    "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.",
+    "required": [
+     "apiVersion",
+     "kind",
+     "name",
+     "uid"
+    ],
+    "properties": {
+     "apiVersion": {
+      "description": "API version of the referent.",
+      "type": "string"
+     },
+     "blockOwnerDeletion": {
+      "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+      "type": "boolean"
+     },
+     "controller": {
+      "description": "If true, this reference points to the managing controller.",
+      "type": "boolean"
+     },
+     "kind": {
+      "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "name": {
+      "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+      "type": "string"
+     },
+     "uid": {
+      "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.Patch": {
+    "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body."
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions": {
+    "description": "Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.",
+    "properties": {
+     "uid": {
+      "description": "Specifies the target UID.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR": {
+    "description": "ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match.",
+    "required": [
+     "clientCIDR",
+     "serverAddress"
+    ],
+    "properties": {
+     "clientCIDR": {
+      "description": "The CIDR with which clients can match their IP to figure out the server address that they should use.",
+      "type": "string"
+     },
+     "serverAddress": {
+      "description": "Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.Status": {
+    "description": "Status is a return value for calls that don't return other objects.",
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "code": {
+      "description": "Suggested HTTP return code for this status, 0 if not set.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "details": {
+      "description": "Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails"
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "message": {
+      "description": "A human-readable description of the status of this operation.",
+      "type": "string"
+     },
+     "metadata": {
+      "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+     },
+     "reason": {
+      "description": "A machine-readable description of why this operation is in the \"Failure\" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.",
+      "type": "string"
+     },
+     "status": {
+      "description": "Status of the operation. One of: \"Success\" or \"Failure\". More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause": {
+    "description": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.",
+    "properties": {
+     "field": {
+      "description": "The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.\n\nExamples:\n  \"name\" - the field \"name\" on the current resource\n  \"items[0].name\" - the field \"name\" on the first array entry in \"items\"",
+      "type": "string"
+     },
+     "message": {
+      "description": "A human-readable description of the cause of the error.  This field may be presented as-is to a reader.",
+      "type": "string"
+     },
+     "reason": {
+      "description": "A machine-readable description of the cause of the error. If this value is empty there is no information available.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails": {
+    "description": "StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.",
+    "properties": {
+     "causes": {
+      "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause"
+      }
+     },
+     "group": {
+      "description": "The group attribute of the resource associated with the status StatusReason.",
+      "type": "string"
+     },
+     "kind": {
+      "description": "The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "name": {
+      "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).",
+      "type": "string"
+     },
+     "retryAfterSeconds": {
+      "description": "If specified, the time in seconds before the operation should be retried.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "uid": {
+      "description": "UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.Time": {
+    "type": "string",
+    "format": "date-time"
+   },
+   "io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent": {
+    "description": "Event represents a single event to a watched resource.",
+    "required": [
+     "type",
+     "object"
+    ],
+    "properties": {
+     "object": {
+      "description": "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context.",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+     },
+     "type": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.runtime.RawExtension": {
+    "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package: type MyAPIObject struct {\n\truntime.TypeMeta `json:\",inline\"`\n\tMyPlugin runtime.Object `json:\"myPlugin\"`\n} type PluginA struct {\n\tAOption string `json:\"aOption\"`\n}\n\n// External package: type MyAPIObject struct {\n\truntime.TypeMeta `json:\",inline\"`\n\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n} type PluginA struct {\n\tAOption string `json:\"aOption\"`\n}\n\n// On the wire, the JSON will look something like this: {\n\t\"kind\":\"MyAPIObject\",\n\t\"apiVersion\":\"v1\",\n\t\"myPlugin\": {\n\t\t\"kind\":\"PluginA\",\n\t\t\"aOption\":\"foo\",\n\t},\n}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+    "required": [
+     "Raw"
+    ],
+    "properties": {
+     "Raw": {
+      "description": "Raw is the underlying serialization of this object.",
+      "type": "string",
+      "format": "byte"
+     }
+    }
+   },
+   "io.k8s.apimachinery.pkg.version.Info": {
+    "description": "Info contains versioning information. how we'll want to distribute that information.",
+    "required": [
+     "major",
+     "minor",
+     "gitVersion",
+     "gitCommit",
+     "gitTreeState",
+     "buildDate",
+     "goVersion",
+     "compiler",
+     "platform"
+    ],
+    "properties": {
+     "buildDate": {
+      "type": "string"
+     },
+     "compiler": {
+      "type": "string"
+     },
+     "gitCommit": {
+      "type": "string"
+     },
+     "gitTreeState": {
+      "type": "string"
+     },
+     "gitVersion": {
+      "type": "string"
+     },
+     "goVersion": {
+      "type": "string"
+     },
+     "major": {
+      "type": "string"
+     },
+     "minor": {
+      "type": "string"
+     },
+     "platform": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.AccessSpec": {
+    "properties": {
+     "dns": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.DNSAccessSpec"
+     },
+     "loadBalancer": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.LoadBalancerAccessSpec"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.AlwaysAllowAuthorizationSpec": {},
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.AuthenticationSpec": {
+    "properties": {
+     "kopeio": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KopeioAuthenticationSpec"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.AuthorizationSpec": {
+    "properties": {
+     "alwaysAllow": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.AlwaysAllowAuthorizationSpec"
+     },
+     "rbac": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.RBACAuthorizationSpec"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.BastionSpec": {
+    "properties": {
+     "bastionPublicName": {
+      "type": "string"
+     },
+     "idleTimeoutSeconds": {
+      "description": "IdleTimeoutSeconds is the bastion's Loadbalancer idle timeout",
+      "type": "integer",
+      "format": "int64"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.CNINetworkingSpec": {
+    "description": "CNI is the specification for networking that is implemented by a Daemonset Networking is not managed by kops - we can create options here that directly configure e.g. weave but this is useful for arbitrary network modes or for modes that don't need additional configuration."
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.CalicoNetworkingSpec": {
+    "description": "Calico declares that we want Calico networking",
+    "properties": {
+     "crossSubnet": {
+      "type": "boolean"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.CanalNetworkingSpec": {
+    "description": "Canal declares that we want Canal networking"
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.ClassicNetworkingSpec": {
+    "description": "ClassicNetworkingSpec is the specification of classic networking mode, integrated into kubernetes"
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.CloudConfiguration": {
+    "properties": {
+     "disableSecurityGroupIngress": {
+      "description": "AWS cloud-config options",
+      "type": "boolean"
+     },
+     "elbSecurityGroup": {
+      "type": "string"
+     },
+     "multizone": {
+      "description": "GCE cloud-config options",
+      "type": "boolean"
+     },
+     "nodeInstancePrefix": {
+      "type": "string"
+     },
+     "nodeTags": {
+      "type": "string"
+     },
+     "vSphereCoreDNSServer": {
+      "type": "string"
+     },
+     "vSphereDatacenter": {
+      "type": "string"
+     },
+     "vSphereDatastore": {
+      "type": "string"
+     },
+     "vSpherePassword": {
+      "type": "string"
+     },
+     "vSphereResourcePool": {
+      "type": "string"
+     },
+     "vSphereServer": {
+      "type": "string"
+     },
+     "vSphereUsername": {
+      "description": "vSphere cloud-config specs",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.Cluster": {
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "metadata": {
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+     },
+     "spec": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.ClusterSpec"
+     }
+    },
+    "x-kubernetes-group-version-kind": [
+     {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "Cluster"
+     }
+    ]
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.ClusterList": {
+    "required": [
+     "items"
+    ],
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "items": {
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.Cluster"
+      }
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "metadata": {
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+     }
+    },
+    "x-kubernetes-group-version-kind": [
+     {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "ClusterList"
+     }
+    ]
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.ClusterSpec": {
+    "properties": {
+     "additionalPolicies": {
+      "description": "Additional policies to add for roles",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "api": {
+      "description": "API field controls how the API is exposed outside the cluster",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.AccessSpec"
+     },
+     "authentication": {
+      "description": "Authentication field controls how the cluster is configured for authentication",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.AuthenticationSpec"
+     },
+     "authorization": {
+      "description": "Authorization field controls how the cluster is configured for authorization",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.AuthorizationSpec"
+     },
+     "channel": {
+      "description": "The Channel we are following",
+      "type": "string"
+     },
+     "cloudConfig": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.CloudConfiguration"
+     },
+     "cloudLabels": {
+      "description": "Tags for AWS resources",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "cloudProvider": {
+      "description": "The CloudProvider to use (aws or gce)",
+      "type": "string"
+     },
+     "clusterDNSDomain": {
+      "description": "ClusterDNSDomain is the suffix we use for internal DNS names (normally cluster.local)",
+      "type": "string"
+     },
+     "configBase": {
+      "description": "ConfigBase is the path where we store configuration for the cluster This might be different that the location when the cluster spec itself is stored, both because this must be accessible to the cluster, and because it might be on a different cloud or storage system (etcd vs S3)",
+      "type": "string"
+     },
+     "configStore": {
+      "description": "ConfigStore is the VFS path to where the configuration (Cluster, InstanceGroups etc) is stored",
+      "type": "string"
+     },
+     "dnsZone": {
+      "description": "DNSZone is the DNS zone we should use when configuring DNS This is because some clouds let us define a managed zone foo.bar, and then have kubernetes.dev.foo.bar, without needing to define dev.foo.bar as a hosted zone. DNSZone will probably be a suffix of the MasterPublicName and MasterInternalName Note that DNSZone can either by the host name of the zone (containing dots), or can be an identifier for the zone.",
+      "type": "string"
+     },
+     "docker": {
+      "description": "Component configurations",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.DockerConfig"
+     },
+     "etcdClusters": {
+      "description": "EtcdClusters stores the configuration for each cluster",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.EtcdClusterSpec"
+      }
+     },
+     "hooks": {
+      "description": "Hooks for custom actions e.g. on first installation",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.HookSpec"
+      }
+     },
+     "isolateMasters": {
+      "description": "IsolatesMasters determines whether we should lock down masters so that they are not on the pod network. true is the kube-up behaviour, but it is very surprising: it means that daemonsets only work on the master if they have hostNetwork=true. false is now the default, and it will:\n * give the master a normal PodCIDR\n * run kube-proxy on the master\n * enable debugging handlers on the master, so kubectl logs works",
+      "type": "boolean"
+     },
+     "keyStore": {
+      "description": "KeyStore is the VFS path to where SSL keys and certificates are stored",
+      "type": "string"
+     },
+     "kubeAPIServer": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubeAPIServerConfig"
+     },
+     "kubeControllerManager": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubeControllerManagerConfig"
+     },
+     "kubeDNS": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubeDNSConfig"
+     },
+     "kubeProxy": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubeProxyConfig"
+     },
+     "kubeScheduler": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubeSchedulerConfig"
+     },
+     "kubelet": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubeletConfigSpec"
+     },
+     "kubernetesApiAccess": {
+      "description": "KubernetesAPIAccess determines the permitted access to the API endpoints (master HTTPS) Currently only a single CIDR is supported (though a richer grammar could be added in future)",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "kubernetesVersion": {
+      "description": "The version of kubernetes to install (optional, and can be a \"spec\" like stable)",
+      "type": "string"
+     },
+     "masterInternalName": {
+      "description": "MasterInternalName is the internal DNS name for the master nodes",
+      "type": "string"
+     },
+     "masterKubelet": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubeletConfigSpec"
+     },
+     "masterPublicName": {
+      "description": "MasterPublicName is the external DNS name for the master nodes",
+      "type": "string"
+     },
+     "networkCIDR": {
+      "description": "The CIDR used for the AWS VPC / GCE Network, or otherwise allocated to k8s This is a real CIDR, not the internal k8s network",
+      "type": "string"
+     },
+     "networkID": {
+      "description": "NetworkID is an identifier of a network, if we want to reuse/share an existing network (e.g. an AWS VPC)",
+      "type": "string"
+     },
+     "networking": {
+      "description": "Networking configuration",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.NetworkingSpec"
+     },
+     "nonMasqueradeCIDR": {
+      "description": "NonMasqueradeCIDR is the CIDR for the internal k8s network (on which pods \u0026 services live) It cannot overlap ServiceClusterIPRange",
+      "type": "string"
+     },
+     "project": {
+      "description": "Project is the cloud project we should use, required on GCE",
+      "type": "string"
+     },
+     "secretStore": {
+      "description": "SecretStore is the VFS path to where secrets are stored",
+      "type": "string"
+     },
+     "serviceClusterIPRange": {
+      "description": "ServiceClusterIPRange is the CIDR, from the internal network, where we allocate IPs for services",
+      "type": "string"
+     },
+     "sshAccess": {
+      "description": "SSHAccess determines the permitted access to SSH Currently only a single CIDR is supported (though a richer grammar could be added in future)",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "subnets": {
+      "description": "Configuration of subnets we are targeting",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.ClusterSubnetSpec"
+      }
+     },
+     "topology": {
+      "description": "Topology defines the type of network topology to use on the cluster - default public This is heavily weighted towards AWS for the time being, but should also be agnostic enough to port out to GCE later if needed",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.TopologySpec"
+     },
+     "updatePolicy": {
+      "description": "UpdatePolicy determines the policy for applying upgrades automatically. Valid values:\n  'external' do not apply updates automatically - they are applied manually or by an external system\n  missing: default policy (currently OS security upgrades that do not require a reboot)",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.ClusterSubnetSpec": {
+    "properties": {
+     "cidr": {
+      "type": "string"
+     },
+     "egress": {
+      "type": "string"
+     },
+     "id": {
+      "description": "ProviderID is the cloud provider id for the objects associated with the zone (the subnet on AWS)",
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     },
+     "type": {
+      "type": "string"
+     },
+     "zone": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.DNSAccessSpec": {},
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.DNSSpec": {
+    "properties": {
+     "type": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.DockerConfig": {
+    "properties": {
+     "bridge": {
+      "type": "string"
+     },
+     "bridgeIP": {
+      "description": "The bridge cidr (--bip) flag",
+      "type": "string"
+     },
+     "insecureRegistry": {
+      "type": "string"
+     },
+     "ipMasq": {
+      "type": "boolean"
+     },
+     "ipTables": {
+      "type": "boolean"
+     },
+     "logDriver": {
+      "type": "string"
+     },
+     "logLevel": {
+      "type": "string"
+     },
+     "logOpt": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "mtu": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "registryMirrors": {
+      "description": "Set mirrors for dockerd, benefiting cluster provisioning and image pulling",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "storage": {
+      "description": "Storage maps to the docker storage flag But nodeup will also process a comma-separate list, selecting the first supported option",
+      "type": "string"
+     },
+     "version": {
+      "description": "The version of docker to install Be careful if changing this; not all docker versions are validated, and they will break in bad ways.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.EtcdClusterSpec": {
+    "properties": {
+     "etcdMembers": {
+      "description": "EtcdMember stores the configurations for each member of the cluster (including the data volume)",
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.EtcdMemberSpec"
+      }
+     },
+     "name": {
+      "description": "Name is the name of the etcd cluster (main, events etc)",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.EtcdMemberSpec": {
+    "properties": {
+     "encryptedVolume": {
+      "type": "boolean"
+     },
+     "instanceGroup": {
+      "type": "string"
+     },
+     "kmsKeyId": {
+      "type": "string"
+     },
+     "name": {
+      "description": "Name is the name of the member within the etcd cluster",
+      "type": "string"
+     },
+     "volumeSize": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "volumeType": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.ExecContainerAction": {
+    "properties": {
+     "command": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "image": {
+      "description": "Docker image name.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.ExternalNetworkingSpec": {
+    "description": "ExternalNetworkingSpec is the specification for networking that is implemented by a Daemonset It also uses kubenet"
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.FlannelNetworkingSpec": {
+    "description": "Flannel declares that we want Flannel networking"
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.HookSpec": {
+    "properties": {
+     "execContainer": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.ExecContainerAction"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroup": {
+    "description": "InstanceGroup represents a group of instances (either nodes or masters) with the same configuration",
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "metadata": {
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+     },
+     "spec": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroupSpec"
+     }
+    },
+    "x-kubernetes-group-version-kind": [
+     {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroup"
+     }
+    ]
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroupList": {
+    "required": [
+     "items"
+    ],
+    "properties": {
+     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "type": "string"
+     },
+     "items": {
+      "type": "array",
+      "items": {
+       "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroup"
+      }
+     },
+     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+     },
+     "metadata": {
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+     }
+    },
+    "x-kubernetes-group-version-kind": [
+     {
+      "group": "kops",
+      "version": "v1alpha2",
+      "kind": "InstanceGroupList"
+     }
+    ]
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.InstanceGroupSpec": {
+    "properties": {
+     "additionalSecurityGroups": {
+      "description": "AdditionalSecurityGroups attaches additional security groups (e.g. i-123456)",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "associatePublicIp": {
+      "description": "AssociatePublicIP is true if we want instances to have a public IP",
+      "type": "boolean"
+     },
+     "cloudLabels": {
+      "description": "CloudLabels indicates the labels for instances in this group, at the AWS level",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "image": {
+      "type": "string"
+     },
+     "kubelet": {
+      "description": "Kubelet overrides kubelet config from the ClusterSpec",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubeletConfigSpec"
+     },
+     "machineType": {
+      "description": "NodeInstancePrefix string `json:\",omitempty\"` NodeLabels         string `json:\",omitempty\"`",
+      "type": "string"
+     },
+     "maxPrice": {
+      "description": "MaxPrice indicates this is a spot-pricing group, with the specified value as our max-price bid",
+      "type": "string"
+     },
+     "maxSize": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "minSize": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "nodeLabels": {
+      "description": "NodeLabels indicates the kubernetes labels for nodes in this group",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "role": {
+      "description": "Type determines the role of instances in this group: masters or nodes",
+      "type": "string"
+     },
+     "rootVolumeOptimization": {
+      "description": "RootVolumeOptimization enables EBS optimization for an instance",
+      "type": "boolean"
+     },
+     "rootVolumeSize": {
+      "description": "RootVolumeSize is the size of the EBS root volume to use, in GB",
+      "type": "integer",
+      "format": "int32"
+     },
+     "rootVolumeType": {
+      "description": "RootVolumeType is the type of the EBS root volume to use (e.g. gp2)",
+      "type": "string"
+     },
+     "subnets": {
+      "description": "Subnets is the names of the Subnets (as specified in the Cluster) where machines in this instance group should be placed",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "taints": {
+      "description": "Taints indicates the kubernetes taints for nodes in this group",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "tenancy": {
+      "description": "Describes the tenancy of the instance group. Can be either default or dedicated. Currently only applies to AWS.",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KopeioAuthenticationSpec": {},
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KopeioNetworkingSpec": {
+    "description": "Kopeio declares that we want Kopeio networking"
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KubeAPIServerConfig": {
+    "properties": {
+     "address": {
+      "type": "string"
+     },
+     "admissionControl": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "allowPrivileged": {
+      "type": "boolean"
+     },
+     "anonymousAuth": {
+      "type": "boolean"
+     },
+     "apiServerCount": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "auditLogMaxAge": {
+      "description": "The maximum number of days to retain old audit log files based on the timestamp encoded in their filename.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "auditLogMaxBackups": {
+      "description": "The maximum number of old audit log files to retain.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "auditLogMaxSize": {
+      "description": "The maximum size in megabytes of the audit log file before it gets rotated. Defaults to 100MB.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "auditLogPath": {
+      "description": "If set, all requests coming to the apiserver will be logged to this file.",
+      "type": "string"
+     },
+     "authenticationTokenWebhookCacheTtl": {
+      "description": "The duration to cache responses from the webhook token authenticator. Default is 2m. (default 2m0s)",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+     },
+     "authenticationTokenWebhookConfigFile": {
+      "description": "File with webhook configuration for token authentication in kubeconfig format. The API server will query the remote service to determine authentication for bearer tokens.",
+      "type": "string"
+     },
+     "authorizationMode": {
+      "type": "string"
+     },
+     "authorizationRbacSuperUser": {
+      "type": "string"
+     },
+     "basicAuthFile": {
+      "type": "string"
+     },
+     "clientCAFile": {
+      "type": "string"
+     },
+     "cloudProvider": {
+      "type": "string"
+     },
+     "etcdServers": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "etcdServersOverrides": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "image": {
+      "type": "string"
+     },
+     "insecurePort": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "kubeletClientCertificate": {
+      "type": "string"
+     },
+     "kubeletClientKey": {
+      "type": "string"
+     },
+     "kubeletPreferredAddressTypes": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "logLevel": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "oidcCAFile": {
+      "description": "If set, the OpenID server's certificate will be verified by one of the authorities in the oidc-ca-file otherwise the host's root CA set will be used.",
+      "type": "string"
+     },
+     "oidcClientID": {
+      "description": "The client ID for the OpenID Connect client, must be set if oidc-issuer-url is set.",
+      "type": "string"
+     },
+     "oidcGroupsClaim": {
+      "description": "If provided, the name of a custom OpenID Connect claim for specifying user groups. The claim value is expected to be a string or array of strings.",
+      "type": "string"
+     },
+     "oidcIssuerURL": {
+      "description": "The URL of the OpenID issuer, only HTTPS scheme will be accepted. If set, it will be used to verify the OIDC JSON Web Token (JWT).",
+      "type": "string"
+     },
+     "oidcUsernameClaim": {
+      "description": "The OpenID claim to use as the user name. Note that claims other than the default ('sub') is not guaranteed to be unique and immutable.",
+      "type": "string"
+     },
+     "pathSrvKubernetes": {
+      "type": "string"
+     },
+     "pathSrvSshproxy": {
+      "type": "string"
+     },
+     "runtimeConfig": {
+      "description": "keys and values in RuntimeConfig are parsed into the `--runtime-config` parameter for KubeAPIServer, concatenated with commas. ex: `--runtime-config=key1=value1,key2=value2`. Use this to enable alpha resources on kube-apiserver",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "securePort": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "serviceClusterIPRange": {
+      "type": "string"
+     },
+     "storageBackend": {
+      "type": "string"
+     },
+     "tlsCertFile": {
+      "type": "string"
+     },
+     "tlsPrivateKeyFile": {
+      "type": "string"
+     },
+     "tokenAuthFile": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KubeControllerManagerConfig": {
+    "properties": {
+     "allocateNodeCIDRs": {
+      "description": "allocateNodeCIDRs enables CIDRs for Pods to be allocated and, if ConfigureCloudRoutes is true, to be set on the cloud provider.",
+      "type": "boolean"
+     },
+     "attachDetachReconcileSyncPeriod": {
+      "description": "ReconcilerSyncLoopPeriod is the amount of time the reconciler sync states loop wait between successive executions. Is set to 1 min by kops by default",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+     },
+     "cloudProvider": {
+      "description": "cloudProvider is the provider for cloud services.",
+      "type": "string"
+     },
+     "clusterCIDR": {
+      "description": "clusterCIDR is CIDR Range for Pods in cluster.",
+      "type": "string"
+     },
+     "clusterName": {
+      "description": "clusterName is the instance prefix for the cluster.",
+      "type": "string"
+     },
+     "configureCloudRoutes": {
+      "description": "configureCloudRoutes enables CIDRs allocated with allocateNodeCIDRs to be configured on the cloud provider.",
+      "type": "boolean"
+     },
+     "image": {
+      "type": "string"
+     },
+     "leaderElection": {
+      "description": "leaderElection defines the configuration of leader election client.",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.LeaderElectionConfiguration"
+     },
+     "logLevel": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "master": {
+      "type": "string"
+     },
+     "pathSrvKubernetes": {
+      "type": "string"
+     },
+     "rootCAFile": {
+      "description": "rootCAFile is the root certificate authority will be included in service account's token secret. This must be a valid PEM-encoded CA bundle.",
+      "type": "string"
+     },
+     "serviceAccountPrivateKeyFile": {
+      "type": "string"
+     },
+     "terminatedPodGCThreshold": {
+      "description": "terminatedPodGCThreshold is the number of terminated pods that can exist before the terminated pod garbage collector starts deleting terminated pods. If \u003c= 0, the terminated pod garbage collector is disabled.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "useServiceAccountCredentials": {
+      "description": "UseServiceAccountCredentials controls whether we use individual service account credentials for each controller.",
+      "type": "boolean"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KubeDNSConfig": {
+    "properties": {
+     "domain": {
+      "type": "string"
+     },
+     "image": {
+      "description": "Image is the name of the docker image to run",
+      "type": "string"
+     },
+     "replicas": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "serverIP": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KubeProxyConfig": {
+    "properties": {
+     "clusterCIDR": {
+      "description": "clusterCIDR is the CIDR range of the pods in the cluster. It is used to bridge traffic coming from outside of the cluster. If not provided, no off-cluster bridging will be performed.",
+      "type": "string"
+     },
+     "cpuRequest": {
+      "type": "string"
+     },
+     "hostnameOverride": {
+      "description": "hostnameOverride, if non-empty, will be used as the identity instead of the actual hostname. Note: We recognize some additional values:\n @aws uses the hostname from the AWS metadata service",
+      "type": "string"
+     },
+     "image": {
+      "type": "string"
+     },
+     "logLevel": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "master": {
+      "description": "master is the address of the Kubernetes API server (overrides any value in kubeconfig)",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KubeSchedulerConfig": {
+    "properties": {
+     "image": {
+      "type": "string"
+     },
+     "leaderElection": {
+      "description": "leaderElection defines the configuration of leader election client.",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.LeaderElectionConfiguration"
+     },
+     "logLevel": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "master": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KubeletConfigSpec": {
+    "properties": {
+     "allowPrivileged": {
+      "description": "allowPrivileged enables containers to request privileged mode. Defaults to false.",
+      "type": "boolean"
+     },
+     "anonymousAuth": {
+      "description": "AnonymousAuth chooses if you want anonymous auth on the kubelet api",
+      "type": "boolean"
+     },
+     "apiServers": {
+      "description": "not used for clusters version 1.6 and later",
+      "type": "string"
+     },
+     "babysitDaemons": {
+      "description": "The node has babysitter process monitoring docker and kubelet. Removed as of 1.7",
+      "type": "boolean"
+     },
+     "cgroupRoot": {
+      "description": "cgroupRoot is the root cgroup to use for pods. This is handled by the container runtime on a best effort basis.",
+      "type": "string"
+     },
+     "clientCaFile": {
+      "description": "The client CA which the requestes for the above must be signed by",
+      "type": "string"
+     },
+     "cloudProvider": {
+      "description": "cloudProvider is the provider for cloud services.",
+      "type": "string"
+     },
+     "clusterDNS": {
+      "description": "clusterDNS is the IP address for a cluster DNS server.  If set, kubelet will configure all containers to use this for DNS resolution in addition to the host's DNS servers",
+      "type": "string"
+     },
+     "clusterDomain": {
+      "description": "clusterDomain is the DNS domain for this cluster. If set, kubelet will configure all containers to search this domain in addition to the host's search domains.",
+      "type": "string"
+     },
+     "configureCbr0": {
+      "description": "configureCBR0 enables the kublet to configure cbr0 based on Node.Spec.PodCIDR.",
+      "type": "boolean"
+     },
+     "enableCustomMetrics": {
+      "description": "enable gathering custom metrics.",
+      "type": "boolean"
+     },
+     "enableDebuggingHandlers": {
+      "description": "enableDebuggingHandlers enables server endpoints for log collection and local running of containers and commands",
+      "type": "boolean"
+     },
+     "enforceNodeAllocatable": {
+      "description": "Enforce Allocatable across pods whenever the overall usage across all pods exceeds Allocatable.",
+      "type": "string"
+     },
+     "evictionHard": {
+      "description": "Comma-delimited list of hard eviction expressions.  For example, 'memory.available\u003c300Mi'.",
+      "type": "string"
+     },
+     "evictionMaxPodGracePeriod": {
+      "description": "Maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "evictionMinimumReclaim": {
+      "description": "Comma-delimited list of minimum reclaims (e.g. imagefs.available=2Gi) that describes the minimum amount of resource the kubelet will reclaim when performing a pod eviction if that resource is under pressure.",
+      "type": "string"
+     },
+     "evictionPressureTransitionPeriod": {
+      "description": "Duration for which the kubelet has to wait before transitioning out of an eviction pressure condition.",
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+     },
+     "evictionSoft": {
+      "description": "Comma-delimited list of soft eviction expressions.  For example, 'memory.available\u003c300Mi'.",
+      "type": "string"
+     },
+     "evictionSoftGracePeriod": {
+      "description": "Comma-delimited list of grace periods for each soft eviction signal.  For example, 'memory.available=30s'.",
+      "type": "string"
+     },
+     "featureGates": {
+      "description": "FeatureGates is set of key=value pairs that describe feature gates for alpha/experimental features.",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "hairpinMode": {
+      "description": "How should the kubelet configure the container bridge for hairpin packets. Setting this flag allows endpoints in a Service to loadbalance back to themselves if they should try to access their own Service. Values:\n  \"promiscuous-bridge\": make the container bridge promiscuous.\n  \"hairpin-veth\":       set the hairpin flag on container veth interfaces.\n  \"none\":               do nothing.\nSetting --configure-cbr0 to false implies that to achieve hairpin NAT one must set --hairpin-mode=veth-flag, because bridge assumes the existence of a container bridge named cbr0.",
+      "type": "string"
+     },
+     "hostnameOverride": {
+      "description": "hostnameOverride is the hostname used to identify the kubelet instead of the actual hostname. Note: We recognize some additional values:\n @aws uses the hostname from the AWS metadata service",
+      "type": "string"
+     },
+     "imageGCHighThresholdPercent": {
+      "description": "imageGCHighThresholdPercent is the percent of disk usage after which image garbage collection is always run.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "imageGCLowThresholdPercent": {
+      "description": "imageGCLowThresholdPercent is the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "kubeReserved": {
+      "description": "Resource reservation for kubernetes system daemons like the kubelet, container runtime, node problem detector, etc.",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "kubeReservedCgroup": {
+      "description": "Control group for kube daemons.",
+      "type": "string"
+     },
+     "kubeconfigPath": {
+      "description": "kubeconfigPath is the path to the kubeconfig file with authorization information and API server location kops will only use this for clusters version 1.6 and later",
+      "type": "string"
+     },
+     "kubeletCgroups": {
+      "description": "KubeletCgroups is the absolute name of cgroups to isolate the kubelet in.",
+      "type": "string"
+     },
+     "logLevel": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "maxPods": {
+      "description": "maxPods is the number of pods that can run on this Kubelet.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "networkPluginMTU": {
+      "description": "networkPluginMTU is the MTU to be passed to the network plugin, and overrides the default MTU for cases where it cannot be automatically computed (such as IPSEC).",
+      "type": "integer",
+      "format": "int32"
+     },
+     "networkPluginName": {
+      "description": "networkPluginName is the name of the network plugin to be invoked for various events in kubelet/pod lifecycle",
+      "type": "string"
+     },
+     "nodeLabels": {
+      "description": "nodeLabels to add when registering the node in the cluster.",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "nonMasqueradeCIDR": {
+      "description": "nonMasqueradeCIDR configures masquerading: traffic to IPs outside this range will use IP masquerade.",
+      "type": "string"
+     },
+     "nvidiaGPUs": {
+      "description": "nvidiaGPUs is the number of NVIDIA GPU devices on this node.",
+      "type": "integer",
+      "format": "int32"
+     },
+     "podCIDR": {
+      "description": "The CIDR to use for pod IP addresses, only used in standalone mode. In cluster mode, this is obtained from the master.",
+      "type": "string"
+     },
+     "podManifestPath": {
+      "type": "string"
+     },
+     "reconcileCIDR": {
+      "description": "reconcileCIDR is Reconcile node CIDR with the CIDR specified by the API server. No-op if register-node or configure-cbr0 is false.",
+      "type": "boolean"
+     },
+     "registerSchedulable": {
+      "description": "registerSchedulable tells the kubelet to register the node as schedulable. No-op if register-node is false.",
+      "type": "boolean"
+     },
+     "requireKubeconfig": {
+      "type": "boolean"
+     },
+     "resolvConf": {
+      "description": "ResolverConfig is the resolver configuration file used as the basis for the container DNS resolution configuration.\"), []",
+      "type": "string"
+     },
+     "runtimeCgroups": {
+      "description": "Cgroups that container runtime is expected to be isolated in.",
+      "type": "string"
+     },
+     "systemCgroups": {
+      "description": "SystemCgroups is absolute name of cgroups in which to place all non-kernel processes that are not already in a container. Empty for no container. Rolling back the flag requires a reboot.",
+      "type": "string"
+     },
+     "systemReserved": {
+      "description": "Capture resource reservation for OS system daemons like sshd, udev, etc.",
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "systemReservedCgroup": {
+      "description": "Parent control group for OS system daemons.",
+      "type": "string"
+     },
+     "taints": {
+      "description": "Taints to add when registering a node in the cluster",
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "volumePluginDirectory": {
+      "description": "The full path of the directory in which to search for additional third party volume plugins",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KubenetNetworkingSpec": {
+    "description": "KubenetNetworkingSpec is the specification for kubenet networking, largely integrated but intended to replace classic"
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.KuberouterNetworkingSpec": {
+    "description": "Kuberouter declares that we want Canal networking"
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.LeaderElectionConfiguration": {
+    "description": "LeaderElectionConfiguration defines the configuration of leader election clients for components that can run with leader election enabled.",
+    "properties": {
+     "leaderElect": {
+      "description": "leaderElect enables a leader election client to gain leadership before executing the main loop. Enable this when running replicated components for high availability.",
+      "type": "boolean"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.LoadBalancerAccessSpec": {
+    "properties": {
+     "idleTimeoutSeconds": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "type": {
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.NetworkingSpec": {
+    "description": "NetworkingSpec allows selection and configuration of a networking plugin",
+    "properties": {
+     "calico": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.CalicoNetworkingSpec"
+     },
+     "canal": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.CanalNetworkingSpec"
+     },
+     "classic": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.ClassicNetworkingSpec"
+     },
+     "cni": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.CNINetworkingSpec"
+     },
+     "external": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.ExternalNetworkingSpec"
+     },
+     "flannel": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.FlannelNetworkingSpec"
+     },
+     "kopeio": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KopeioNetworkingSpec"
+     },
+     "kubenet": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KubenetNetworkingSpec"
+     },
+     "kuberouter": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.KuberouterNetworkingSpec"
+     },
+     "weave": {
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.WeaveNetworkingSpec"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.RBACAuthorizationSpec": {},
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.TopologySpec": {
+    "properties": {
+     "bastion": {
+      "description": "Bastion provide an external facing point of entry into a network containing private network instances. This host can provide a single point of fortification or audit and can be started and stopped to enable or disable inbound SSH communication from the Internet, some call bastion as the \"jump server\".",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.BastionSpec"
+     },
+     "dns": {
+      "description": "DNS configures options relating to DNS, in particular whether we use a public or a private hosted zone",
+      "$ref": "#/definitions/io.k8s.kops.pkg.apis.kops.v1alpha2.DNSSpec"
+     },
+     "masters": {
+      "description": "The environment to launch the Kubernetes masters in public|private",
+      "type": "string"
+     },
+     "nodes": {
+      "description": "The environment to launch the Kubernetes nodes in public|private",
+      "type": "string"
+     }
+    }
+   },
+   "io.k8s.kops.pkg.apis.kops.v1alpha2.WeaveNetworkingSpec": {
+    "description": "Weave declares that we want Weave networking",
+    "properties": {
+     "mtu": {
+      "type": "integer",
+      "format": "int32"
+     }
+    }
+   }
+  }
+ }
