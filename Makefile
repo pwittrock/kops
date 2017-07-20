@@ -252,6 +252,19 @@ gen-cli-docs: kops # Regenerate CLI docs
 	KOPS_FEATURE_FLAGS= \
 	${KOPS} genhelpdocs --out docs/cli
 
+.PHONY: gen-api-docs
+gen-api-docs:
+	# Broken in 1.7: go install k8s.io/kops/vendor/k8s.io/kubernetes/cmd/libs/go2idl/openapi-gen
+	go install k8s.io/kubernetes/cmd/libs/go2idl/openapi-gen
+	${GOPATH}/bin/openapi-gen  --input-dirs k8s.io/kops/pkg/apis/...,k8s.io/apimachinery/pkg/apis/meta/v1/...,k8s.io/apimachinery/pkg/version/...,k8s.io/apimachinery/pkg/runtime/...,k8s.io/apimachinery/pkg/api/resource/...,k8s.io/apimachinery/pkg/util/intstr/... --output-package=k8s.io/kops/pkg/openapi
+	go install k8s.io/kops/cmd/kops-server
+	${GOPATH}/bin/kops-server --print-openapi --storage-backend=etcd2 --etcd-servers=http://127.0.0.1:8888 > ./docs/apireference/openapi-spec/swagger.json
+	# Make use of the most excellent apiserver-builder for our docs ... more to follow
+	go get github.com/kubernetes-incubator/apiserver-builder/cmd/...
+	go get github.com/kubernetes-incubator/reference-docs/gen-apidocs/...
+	${GOPATH}/bin/apiserver-boot build docs --build-openapi=false --output-dir=docs/apireference/
+
+
 .PHONY: push
 # Will always push a linux-based build up to the server
 push: crossbuild-nodeup
